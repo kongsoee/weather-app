@@ -1,1 +1,36 @@
 @import url(common.css);
+
+body{
+  background: url(https://64.media.tumblr.com/71c8aa99a673ae72b3943b116fed8a48/tumblr_nb07iqQTIL1qg67clo1_500.gifv);
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+  flex-direction: column;
+}
+
+.weather-box{
+  background: lightgoldenrodyellow;
+  padding :50px;
+}
+
+.btn{
+  background-color: rgb(62, 124, 62);
+  padding:10px;
+  border-radius: 20px;
+  color:white;
+  border:none;
+  margin: 30px 5px 0px 0px;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  box-shadow: 0 2px 8px -1px rgb(42, 79, 42) ;
+  transform: translateY(-0.25em);
+}
