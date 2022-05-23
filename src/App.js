@@ -21,17 +21,16 @@ function App() {
   const cities=['Monza','Bahrain','Monte Carlo','Miami']
 
   //현재위치 정하는 함수
-  const getCurrentLocation=()=>{
-    navigator.geolocation.watchPosition((position)=>{
+  const getCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
       let lat = position.coords.latitude;
       let lon = position.coords.longitude;
-      getWheatherByCurrentLocation(lat,lon);
-    })
+      getWeatherByCurrentLocation(lat, lon);
+    });
   };
 
-
   //api 불러오기
-  const getWheatherByCurrentLocation =async(lat,lon)=>{
+  const getWeatherByCurrentLocation =async(lat,lon)=>{
     let url=`
     https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0f2a48faba1962e4b3b139d11d6c5438&units=metric`
     setLoading(true);
@@ -51,6 +50,8 @@ function App() {
     setLoading(false);
   
   }
+
+
   //첫번째 ui랜더 후에 작동됨
   //useEffect두개 하면 안됨 그래서 한개 안에 넣음
   useEffect(()=>{
@@ -60,7 +61,14 @@ function App() {
     }
   },[city]);
 
-
+  //현재 위치 날씨 보여주기
+  const handleCityChange = (city) => {
+    if (city === "current") {
+      getCurrentLocation();
+    } else {
+      setCity(city);
+    }
+  };
   return (
     <div>
       {loading?(
@@ -70,7 +78,7 @@ function App() {
       ):(
       <div className='container'>
         <WeatherBox weather={weather}/>
-        <WeatherButton cities={cities} setCity={setCity}/>
+        <WeatherButton cities={cities} handleCityChange={handleCityChange} selectdeCity={city}/>
      </div>
      )}
     </div>
