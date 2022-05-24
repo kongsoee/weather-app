@@ -19,4 +19,4 @@
 * Html5
 * Css3
 * React
-* Node.js
+* Javascript
